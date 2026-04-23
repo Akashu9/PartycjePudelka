@@ -12,6 +12,34 @@ Aplikacja liczy unikalne partycje prostopadłościanu `m×n×k` na osiowo równo
 
 ## Uruchomienie
 
+### Windows (najprościej, dla osoby nietechnicznej)
+
+1. Otwórz folder projektu.
+2. Kliknij dwukrotnie plik `start-windows-easy.bat`.
+3. Poczekaj, aż przeglądarka otworzy stronę `http://localhost:8080`.
+4. Nie zamykaj czarnego okna skryptu podczas pracy aplikacji.
+
+Jeśli pojawi się komunikat o braku Pythona:
+
+1. Skrypt otworzy stronę pobierania Pythona.
+2. Zainstaluj Python 3.
+3. W instalatorze zaznacz opcję `Add python.exe to PATH`.
+4. Uruchom ponownie `start-windows-easy.bat`.
+
+Jak zatrzymać aplikację: zamknij okno skryptu.
+
+### Windows (wersja z parametrem portu)
+
+```bat
+start-windows.bat
+```
+
+Opcjonalnie inny port:
+
+```bat
+start-windows.bat 9000
+```
+
 ### Linux
 
 Wejdź do katalogu projektu i uruchom skrypt:
@@ -24,20 +52,6 @@ Opcjonalnie inny port:
 
 ```bash
 ./start-linux.sh 9000
-```
-
-### Windows
-
-1. Uruchom:
-
-```bat
-start-windows.bat
-```
-
-Opcjonalnie otwórz `cmd` lub PowerShell i przejdź do katalogu projektu:
-
-```bat
-start-windows.bat 9000
 ```
 
 ### Ręcznie (alternatywnie)
@@ -61,4 +75,5 @@ http://localhost:8080
 - `app.js` - logika UI i rysowanie 3D
 - `solver-worker.js` - algorytm obliczeń w Web Workerze
 - `start-linux.sh` - skrypt startowy dla Linux
-- `start-windows.bat` - skrypt startowy dla Windows
+- `start-windows.bat` - skrypt startowy dla Windows (z parametrem portu)
+- `start-windows-easy.bat` - najprostszy start dla Windows (dwuklik)
