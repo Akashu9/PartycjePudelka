@@ -1,3 +1,7 @@
+# WYMAGANY ZAINSTALOWANY PYTHON
+
+Przetestowany na wersji 3.14
+
 # Partycje Prostopadłościanu - aplikacja web
 
 Aplikacja liczy unikalne partycje prostopadłościanu `m×n×k` na osiowo równoległe klocki o całkowitych dodatnich wymiarach.
@@ -12,7 +16,7 @@ Aplikacja liczy unikalne partycje prostopadłościanu `m×n×k` na osiowo równo
 
 ## Uruchomienie
 
-### Windows (najprościej, dla osoby nietechnicznej)
+### Windows
 
 1. Otwórz folder projektu.
 2. Kliknij dwukrotnie plik `start-windows-easy.bat`.
