@@ -2,8 +2,7 @@
 setlocal EnableExtensions
 
 set "SCRIPT_DIR=%~dp0"
-set "CPP_DIR=%SCRIPT_DIR%cpp"
-set "BUILD_DIR=%CPP_DIR%\build"
+set "BUILD_DIR=%SCRIPT_DIR%build"
 set "TARGET=partycje_pudelka_cpp.exe"
 set "CONFIG=Release"
 
@@ -11,17 +10,12 @@ if not "%~1"=="" set "CONFIG=%~1"
 
 where cmake >nul 2>nul
 if %ERRORLEVEL% NEQ 0 (
-  echo [ERROR] Nie znaleziono cmake. Zainstaluj CMake 3.21+ i uruchom ponownie.
-  exit /b 1
-)
-
-if not exist "%CPP_DIR%\CMakeLists.txt" (
-  echo [ERROR] Brak projektu C++ w katalogu: %CPP_DIR%
+  echo [ERROR] Nie znaleziono cmake.
   exit /b 1
 )
 
 echo [INFO] Konfiguracja CMake...
-cmake -S "%CPP_DIR%" -B "%BUILD_DIR%"
+cmake -S "%SCRIPT_DIR%" -B "%BUILD_DIR%"
 if %ERRORLEVEL% NEQ 0 exit /b %ERRORLEVEL%
 
 echo [INFO] Budowanie aplikacji (%CONFIG%)...

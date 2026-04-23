@@ -2,22 +2,16 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-CPP_DIR="$SCRIPT_DIR/cpp"
-BUILD_DIR="${BUILD_DIR:-$CPP_DIR/build}"
+BUILD_DIR="${BUILD_DIR:-$SCRIPT_DIR/build}"
 TARGET="partycje_pudelka_cpp"
 
 if ! command -v cmake >/dev/null 2>&1; then
-  echo "[ERROR] Nie znaleziono cmake. Zainstaluj CMake 3.21+ i uruchom ponownie."
-  exit 1
-fi
-
-if [ ! -d "$CPP_DIR" ]; then
-  echo "[ERROR] Brak katalogu projektu C++: $CPP_DIR"
+  echo "[ERROR] Nie znaleziono cmake."
   exit 1
 fi
 
 echo "[INFO] Konfiguracja CMake..."
-cmake -S "$CPP_DIR" -B "$BUILD_DIR"
+cmake -S "$SCRIPT_DIR" -B "$BUILD_DIR"
 
 echo "[INFO] Budowanie aplikacji..."
 cmake --build "$BUILD_DIR" -j

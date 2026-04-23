@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partycje Prostopadłościanu</title>
+    <link rel="icon" href="icon.png" sizes="any" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-orb bg-orb-a"></div>
+    <div class="bg-orb bg-orb-b"></div>
+
+    <header class="hero">
+      <h1>Partycje Prostopadłościanu</h1>
+      <p>
+        Enumeracja dopuszczalnych multizbiorów klocków dla
+        <code>m × n × k</code> oraz podgląd jednego przykładowego ułożenia
+        każdej partycji.
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="panel controls-panel">
+        <h2>Parametry</h2>
+
+        <form id="solve-form" class="grid-form" autocomplete="off">
+          <label>
+            m
+            <input
+              id="input-m"
+              name="m"
+              type="number"
+              min="1"
+              max="12"
+              value="2"
+              required
+            />
+          </label>
+          <label>
+            n
+            <input
+              id="input-n"
+              name="n"
+              type="number"
+              min="1"
+              max="12"
+              value="2"
+              required
+            />
+          </label>
+          <label>
+            k
+            <input
+              id="input-k"
+              name="k"
+              type="number"
+              min="1"
+              max="12"
+              value="2"
+              required
+            />
+          </label>
+          <label>
+            Limit czasu (s)
+            <input
+              id="input-time"
+              name="time"
+              type="number"
+              min="1"
+              max="120"
+              value="20"
+              required
+            />
+          </label>
+
+          <label class="checkbox-row">
+            <input id="count-only" type="checkbox" />
+            Tylko zliczanie (bez zapisu ułożeń)
+          </label>
+
+          <div class="buttons-row">
+            <button id="solve-btn" type="submit">Oblicz partycje</button>
+            <button id="cancel-btn" type="button" class="secondary" disabled>
+              Przerwij
+            </button>
+          </div>
+        </form>
+
+        <div id="status" class="status idle">Gotowe do uruchomienia.</div>
+        <div id="summary" class="summary"></div>
+
+        <div class="hint">
+          Dla większych wymiarów liczba rozkładów rośnie bardzo szybko.
+          Praktycznie: najstabilniej dla objętości do ~27 komórek.
+        </div>
+      </section>
+
+      <section class="panel list-panel">
+        <h2>Partycje</h2>
+        <div id="partitions-empty" class="empty-state">
+          Uruchom obliczenia, aby zobaczyć wyniki.
+        </div>
+        <ol id="partitions-list" class="partitions-list"></ol>
+      </section>
+
+      <section class="panel viz-panel">
+        <div class="viz-head">
+          <h2>Wizualizacja 3D</h2>
+          <div id="viz-title" class="viz-title">Brak danych</div>
+        </div>
+
+        <div class="viz-controls">
+          <label>
+            Przezroczystość
+            <input
+              id="alpha-range"
+              type="range"
+              min="0.1"
+              max="0.95"
+              step="0.05"
+              value="0.5"
+            />
+          </label>
+
+          <label>
+            Zoom
+            <input
+              id="zoom-range"
+              type="range"
+              min="0.6"
+              max="2.2"
+              step="0.05"
+              value="1.0"
+            />
+          </label>
+
+          <label>
+            Przekrój
+            <select id="slice-mode">
+              <option value="none">Brak</option>
+              <option value="x">X ≤ t</option>
+              <option value="y">Y ≤ t</option>
+              <option value="z">Z ≤ t</option>
+            </select>
+          </label>
+
+          <label>
+            t
+            <input
+              id="slice-range"
+              type="range"
+              min="0"
+              max="2"
+              step="0.1"
+              value="2"
+            />
+          </label>
+        </div>
+
+        <canvas
+          id="viz-canvas"
+          width="900"
+          height="600"
+          aria-label="Wizualizacja partycji"
+        ></canvas>
+        <div class="viz-help">
+          Przeciągnij myszą, aby obrócić. Kółko myszy zmienia zoom.
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      Aplikacja lokalna (HTML/CSS/JS). Algorytm: pełne przeszukiwanie z
+      deduplikacją do multizbiorów wymiarów.
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

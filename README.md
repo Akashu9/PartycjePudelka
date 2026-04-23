@@ -1,83 +1,47 @@
-# WYMAGANY ZAINSTALOWANY PYTHON
+# Partycje Prostopadloscianu - wersja C++ (jedno okno)
 
-Przetestowany na wersji 3.14
+Projekt zostal przepisany na aplikacje desktopowa C++/Qt6 uruchamiana jako jedno samodzielne okno.
 
-# Partycje Prostopadłościanu - aplikacja web
+## Co robi aplikacja
 
-Aplikacja liczy unikalne partycje prostopadłościanu `m×n×k` na osiowo równoległe klocki o całkowitych dodatnich wymiarach.
+- liczy unikalne partycje prostopadloscianu `m x n x k` na osiowo rownolegle klocki,
+- deduplikuje wyniki do multizbiorow wymiarow (ignoruje polozenie geometryczne elementow),
+- przechowuje jedno przykladowe ulozenie dla kazdej partycji,
+- rysuje wizualizacje 3D z obrotem, zoomem, przezroczystoscia i przekrojami `X <= t`, `Y <= t`, `Z <= t`,
+- umozliwia tryb "tylko zliczanie" bez zapisu geometrii,
+- obsluguje limit czasu i reczne przerwanie obliczen.
 
-## Funkcje
+## Wymagania
 
-- pełna enumeracja dopuszczalnych rozkładów,
-- deduplikacja do multizbiorów wymiarów (z pominięciem permutacji wymiarów klocka),
-- jedno przykładowe ułożenie dla każdej partycji,
-- wizualizacja 3D (`canvas`) z obrotem, zoomem, przezroczystością i przekrojem `X<=t`, `Y<=t`, `Z<=t`,
-- tryb minimalny: samo zliczanie (bez zapisu geometrii).
+- CMake 3.21+
+- kompilator C++20
+- Qt6 (modul `Widgets`)
 
-## Uruchomienie
-
-### Windows
-
-1. Otwórz folder projektu.
-2. Kliknij dwukrotnie plik `start-windows-easy.bat`.
-3. Poczekaj, aż przeglądarka otworzy stronę `http://localhost:8080`.
-4. Nie zamykaj czarnego okna skryptu podczas pracy aplikacji.
-
-Jeśli pojawi się komunikat o braku Pythona:
-
-1. Skrypt otworzy stronę pobierania Pythona.
-2. Zainstaluj Python 3.
-3. W instalatorze zaznacz opcję `Add python.exe to PATH`.
-4. Uruchom ponownie `start-windows-easy.bat`.
-
-Jak zatrzymać aplikację: zamknij okno skryptu.
-
-### Windows (wersja z parametrem portu)
-
-```bat
-start-windows.bat
-```
-
-Opcjonalnie inny port:
-
-```bat
-start-windows.bat 9000
-```
-
-### Linux
-
-Wejdź do katalogu projektu i uruchom skrypt:
+## Budowanie i uruchamianie (Linux/macOS)
 
 ```bash
-./start-linux.sh
+cd cpp
+cmake -S . -B build
+cmake --build build -j
+./build/partycje_pudelka_cpp
 ```
 
-Opcjonalnie inny port:
+## Budowanie i uruchamianie (Windows, PowerShell)
 
-```bash
-./start-linux.sh 9000
+```powershell
+cd cpp
+cmake -S . -B build
+cmake --build build --config Release
+.\build\Release\partycje_pudelka_cpp.exe
 ```
 
-### Ręcznie (alternatywnie)
+## Szybka walidacja
 
-Jeśli nie chcesz używać skryptów:
+Dla `m=2`, `n=2`, `k=2` aplikacja powinna zwrocic **10 partycji** (zgodnie z materialami w `specyfikacja/`).
 
-```bash
-python -m http.server 8080
-```
+## Struktura C++
 
-Potem otwórz:
-
-```text
-http://localhost:8080
-```
-
-## Pliki
-
-- `index.html` - interfejs
-- `style.css` - style
-- `app.js` - logika UI i rysowanie 3D
-- `solver-worker.js` - algorytm obliczeń w Web Workerze
-- `start-linux.sh` - skrypt startowy dla Linux
-- `start-windows.bat` - skrypt startowy dla Windows (z parametrem portu)
-- `start-windows-easy.bat` - najprostszy start dla Windows (dwuklik)
+- `cpp/src/PartitionSolver.*` - solver DFS + deduplikacja partycji
+- `cpp/src/RenderWidget.*` - render 3D i obsluga interakcji mysza
+- `cpp/src/MainWindow.*` - UI, sterowanie obliczeniami, lista wynikow
+- `cpp/src/main.cpp` - punkt startowy aplikacji
