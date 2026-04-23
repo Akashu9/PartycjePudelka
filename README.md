@@ -14,13 +14,7 @@ Aplikacja liczy unikalne partycje prostopadłościanu `m×n×k` na osiowo równo
 
 ### Linux
 
-1. Wejdź do katalogu projektu:
-
-```bash
-cd /home/akash/Program
-```
-
-2. Uruchom skrypt:
+Wejdź do katalogu projektu i uruchom skrypt:
 
 ```bash
 ./start-linux.sh
@@ -34,14 +28,13 @@ Opcjonalnie inny port:
 
 ### Windows
 
-1. Otwórz `cmd` lub PowerShell i przejdź do katalogu projektu.
-2. Uruchom:
+1. Uruchom:
 
 ```bat
 start-windows.bat
 ```
 
-Opcjonalnie inny port:
+Opcjonalnie otwórz `cmd` lub PowerShell i przejdź do katalogu projektu:
 
 ```bat
 start-windows.bat 9000
