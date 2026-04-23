@@ -70,8 +70,10 @@ void MainWindow::setupUi() {
 
   setStyleSheet(QStringLiteral(
       "QMainWindow { background: #edf3f8; }"
+      "QWidget { color: #1f425b; }"
       "QGroupBox {"
       "  font-weight: 600;"
+      "  color: #27465e;"
       "  border: 1px solid #c8d8e5;"
       "  border-radius: 12px;"
       "  margin-top: 0.9em;"
@@ -81,8 +83,23 @@ void MainWindow::setupUi() {
       "  subcontrol-origin: margin;"
       "  left: 12px;"
       "  padding: 0 4px;"
+      "  color: #27465e;"
+      "}"
+      "QLabel {"
+      "  color: #1f425b;"
+      "}"
+      "QCheckBox {"
+      "  color: #1f425b;"
+      "}"
+      "QSpinBox, QComboBox {"
+      "  color: #18364a;"
+      "  background: #ffffff;"
+      "  border: 1px solid #c8d8e5;"
+      "  border-radius: 8px;"
+      "  padding: 4px 6px;"
       "}"
       "QPushButton {"
+      "  color: #1f425b;"
       "  border: 1px solid #6289a6;"
       "  border-radius: 8px;"
       "  padding: 6px 10px;"
@@ -143,10 +160,12 @@ void MainWindow::setupUi() {
   for (QSpinBox* input : {m_inputM, m_inputN, m_inputK}) {
     input->setRange(1, 12);
     input->setValue(2);
+    input->setButtonSymbols(QAbstractSpinBox::NoButtons);
   }
 
   m_inputTime->setRange(1, 120);
   m_inputTime->setValue(20);
+  m_inputTime->setButtonSymbols(QAbstractSpinBox::NoButtons);
 
   formLayout->addRow(QStringLiteral("m"), m_inputM);
   formLayout->addRow(QStringLiteral("n"), m_inputN);

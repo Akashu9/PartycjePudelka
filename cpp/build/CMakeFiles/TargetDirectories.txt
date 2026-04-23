@@ -1,0 +1,5 @@
+C:/Users/Lukasz/Desktop/PartycjePudelka-main/cpp/build/CMakeFiles/partycje_pudelka_cpp.dir
+C:/Users/Lukasz/Desktop/PartycjePudelka-main/cpp/build/CMakeFiles/edit_cache.dir
+C:/Users/Lukasz/Desktop/PartycjePudelka-main/cpp/build/CMakeFiles/rebuild_cache.dir
+C:/Users/Lukasz/Desktop/PartycjePudelka-main/cpp/build/CMakeFiles/partycje_pudelka_cpp_autogen_timestamp_deps.dir
+C:/Users/Lukasz/Desktop/PartycjePudelka-main/cpp/build/CMakeFiles/partycje_pudelka_cpp_autogen.dir

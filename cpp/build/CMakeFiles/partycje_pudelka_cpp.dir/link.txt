@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\partycje_pudelka_cpp.dir/objects.a
+C:\Qt\Tools\mingw1310_64\bin\ar.exe qc CMakeFiles\partycje_pudelka_cpp.dir/objects.a @CMakeFiles\partycje_pudelka_cpp.dir\objects1.rsp
+C:\Qt\Tools\mingw1310_64\bin\g++.exe -mwindows -Wl,--whole-archive CMakeFiles\partycje_pudelka_cpp.dir/objects.a -Wl,--no-whole-archive -o partycje_pudelka_cpp.exe -Wl,--out-implib,libpartycje_pudelka_cpp.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\partycje_pudelka_cpp.dir\linkLibs.rsp
