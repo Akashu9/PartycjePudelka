@@ -1,0 +1,375 @@
+:root {
+  --bg-0: #f3f5f7;
+  --bg-1: #dce4eb;
+  --panel: rgba(255, 255, 255, 0.85);
+  --panel-border: rgba(23, 52, 77, 0.16);
+  --text-main: #102434;
+  --text-muted: #3e5b74;
+  --accent: #2f6f98;
+  --accent-strong: #1f4f6f;
+  --ok: #2b7151;
+  --warn: #845a1d;
+  --error: #982a34;
+  --shadow: 0 18px 35px rgba(23, 44, 67, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Charter", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  color: var(--text-main);
+  background: linear-gradient(140deg, var(--bg-0), var(--bg-1));
+  position: relative;
+  overflow-x: hidden;
+}
+
+.bg-orb {
+  position: fixed;
+  z-index: -1;
+  border-radius: 999px;
+  filter: blur(40px);
+  opacity: 0.45;
+}
+
+.bg-orb-a {
+  width: 480px;
+  height: 480px;
+  background: #bed2e2;
+  top: -160px;
+  right: -100px;
+}
+
+.bg-orb-b {
+  width: 520px;
+  height: 520px;
+  background: #cfe3cf;
+  left: -200px;
+  bottom: -180px;
+}
+
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.2rem 1rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  letter-spacing: 0.02em;
+}
+
+.hero p {
+  margin: 0.7rem 0 0;
+  max-width: 80ch;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.2rem 1.2rem;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  grid-template-areas:
+    "controls viz"
+    "list viz";
+  gap: 1rem;
+  align-items: start;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+}
+
+.panel h2 {
+  margin: 0;
+  padding: 1rem 1rem 0.35rem;
+  font-size: 1.22rem;
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+}
+
+.controls-panel {
+  grid-area: controls;
+  padding-bottom: 1rem;
+}
+
+.grid-form {
+  padding: 0.5rem 1rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.grid-form label {
+  display: grid;
+  gap: 0.25rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+input[type="number"],
+select,
+input[type="range"] {
+  width: 100%;
+}
+
+input[type="number"],
+select {
+  border: 1px solid rgba(41, 74, 103, 0.28);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-main);
+  padding: 0.5rem 0.6rem;
+}
+
+.checkbox-row {
+  display: flex !important;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--text-main) !important;
+}
+
+.checkbox-row input {
+  width: auto;
+}
+
+.buttons-row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 10px;
+  padding: 0.58rem 0.9rem;
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+#solve-btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #f8fbff;
+}
+
+button.secondary {
+  background: #e4ebf1;
+  color: #22384a;
+}
+
+.status,
+.summary,
+.hint {
+  margin: 0.55rem 1rem 0;
+  border-radius: 10px;
+  padding: 0.55rem 0.65rem;
+}
+
+.status {
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+  font-size: 0.94rem;
+  border: 1px solid rgba(43, 76, 102, 0.18);
+  background: #edf3f8;
+}
+
+.status.running {
+  color: #214e6d;
+  background: #deedf7;
+}
+
+.status.ok {
+  color: #144a34;
+  background: #deefe5;
+}
+
+.status.warn {
+  color: #5f4619;
+  background: #f4ead7;
+}
+
+.status.error {
+  color: #6f1820;
+  background: #f7dde0;
+}
+
+.summary {
+  background: rgba(230, 239, 246, 0.68);
+  color: #1d3e58;
+  min-height: 2.2rem;
+}
+
+.hint {
+  color: #33506b;
+  background: rgba(223, 232, 240, 0.75);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.list-panel {
+  grid-area: list;
+  max-height: 600px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.empty-state {
+  margin: 0.75rem 1rem 1rem;
+  color: var(--text-muted);
+}
+
+.partitions-list {
+  margin: 0;
+  padding: 0.4rem 0.8rem 1rem 2.1rem;
+  overflow: auto;
+}
+
+.partitions-list li {
+  margin-bottom: 0.45rem;
+  border: 1px solid rgba(50, 86, 114, 0.18);
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 10px;
+}
+
+.partition-btn {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: var(--text-main);
+  padding: 0.58rem 0.68rem;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.partition-btn.active {
+  background: rgba(84, 141, 179, 0.2);
+}
+
+.partition-sub {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.15rem;
+}
+
+.viz-panel {
+  grid-area: viz;
+  padding: 0.25rem 1rem 1rem;
+}
+
+.viz-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-top: 0.6rem;
+}
+
+.viz-title {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.viz-controls {
+  margin: 0.55rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  gap: 0.65rem;
+}
+
+.viz-controls label {
+  display: grid;
+  gap: 0.22rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+#viz-canvas {
+  width: 100%;
+  border: 1px solid rgba(37, 73, 102, 0.22);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f5fbff, #dce6ef);
+  aspect-ratio: 3 / 2;
+  display: block;
+}
+
+.viz-help {
+  margin-top: 0.45rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.2rem 1.2rem;
+  color: #3d566b;
+  font-size: 0.9rem;
+}
+
+code {
+  font-family: "Iosevka", "Cascadia Mono", "Consolas", monospace;
+  background: rgba(36, 72, 98, 0.1);
+  border-radius: 6px;
+  padding: 0.05rem 0.3rem;
+}
+
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "controls"
+      "viz"
+      "list";
+  }
+
+  .list-panel {
+    max-height: 460px;
+  }
+
+  .viz-controls {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .buttons-row {
+    flex-direction: column;
+  }
+
+  .viz-controls {
+    grid-template-columns: 1fr;
+  }
+}
